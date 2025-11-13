@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type N Tell</title>
+    <link rel="stylesheet" href="Cstudyy.css">
+</head>
+
+<body>
+    <!-- Navigation Bar (hidden initially) -->
+    <nav id="navbar" style="display: none;">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span>🏫 School Feedback System</span>
+                <span id="adminBadge" class="admin-badge" style="display: none;">ADMIN</span>
+            </div>
+            <div class="nav-links">
+                <button id="navFeedback" class="nav-link" style="display: none;">Feedback</button>
+                <button id="navDashboard" class="nav-link" style="display: none;">Dashboard</button>
+                <button id="navAbout" class="nav-link" style="display: none;">About</button>
+                <button id="navLogout" class="nav-link logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Login Page -->
+        <div id="loginPage" class="page">
+            <div class="login-box">
+                <h2>Type N Tell</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <p id="loginError" class="error-message" style="display: none;"></p>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <p class="login-hint">
+                    <strong>Admin:</strong> 24-0601 / 2004<br>
+                </p>
+            </div>
+        </div>
+
+        <!-- Feedback Form Page -->
+        <div id="feedbackPage" class="page" style="display: none;">
+            <div class="content-box">
+                <h2>Submit Facility Feedback</h2>
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label>Select Facility</label>
+                        <select id="facility" required>
+                            <option value="">-- Choose a facility --</option>
+                            <option value="Classroom">Classroom</option>
+                            <option value="Restroom">Restroom</option>
+                            <option value="Laboratory">Laboratory</option>
+                            <option value="Canteen">Canteen</option>
+                            <option value="Library">Library</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description / Issue</label>
+                        <textarea id="description" placeholder="Describe the issue or feedback..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating (1-5 stars)</label>
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" id="rating" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard Page -->
+        <div id="dashboardPage" class="page" style="display: none;">
+            <div class="content-box">
+                <h2>Admin Dashboard - All Feedback</h2>
+                <div id="feedbackTableContainer">
+                    <p id="noFeedbackMessage" class="no-feedback">
+                        No feedback submitted yet. Submit your first feedback to see it here!
+                    </p>
+                    <div id="tableWrapper" style="display: none;">
+                        <table id="feedbackTable">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Facility</th>
+                                    <th>Description</th>
+                                    <th>Rating</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="feedbackTableBody">
+                                <!-- Feedback rows will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="total-feedback">
+                    <p><strong>Total Feedback:</strong> <span id="totalCount">0</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="aboutPage" class="page" style="display: none;">
+            <div class="content-box about-box">
+                <h2>About School Facility Feedback System</h2>
+                
+                <div class="about-content">
+                    <h3>System Overview</h3>
+                    <p>
+                        The School Facility Feedback System is a simple web-based application designed to help
+                        students and staff report issues or provide feedback about school facilities. This system
+                        makes it easy to track and manage facility-related concerns efficiently.
+                    </p>
+
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Easy-to-use feedback submission form</li>
+                        <li>Multiple facility categories (Classroom, Restroom, Laboratory, Canteen, Library)</li>
+                        <li>Star rating system (1-5 stars)</li>
+                        <li>Admin dashboard to view all submitted feedback</li>
+                        <li>Data persistence using browser localStorage</li>
+                    </ul>
+
+                    <h3>Technologies Used</h3>
+                    <ul>
+                        <li>HTML5 - Structure and content</li>
+                        <li>CSS3 - Styling and layout</li>
+                        <li>JavaScript - Interactivity and data management</li>
+                        <li>LocalStorage API - Data persistence</li>
+                    </ul>
+
+                    <h3>Developer Information</h3>
+                    <div class="dev-info">
+                        <p><strong>Project:</strong> School Facility Feedback System</p>
+                        <p><strong>Version:</strong> 1.0.0</p>
+                        <p><strong>Purpose:</strong> Educational project for IT students learning web development</p>
+                        <p><strong>Date:</strong> November 2025</p>
+                    </div>
+
+                    <h3>How to Use</h3>
+                    <ol>
+                        <li>Login with any username and password (demo mode)</li>
+                        <li>Navigate to the Feedback page to submit feedback</li>
+                        <li>Fill in the facility, description, and rating</li>
+                        <li>Click Submit to save your feedback</li>
+                        <li>View all submitted feedback in the Dashboard</li>
+                    </ol>
+
+                    <p class="note">
+                        <strong>Note:</strong> This is a demo system for educational purposes. All data is stored
+                        in your browser's localStorage and will be cleared if you clear your browser data.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Cstudyyy.js"></script>
+</body>
+</html>
